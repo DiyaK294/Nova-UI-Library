@@ -667,6 +667,97 @@
             opacity: 0.8;
         }
 
+        /* NEW: FOOTER STYLES */
+        .footer {
+            border-top: 1px solid var(--border-light);
+            padding: 4rem 2rem 2rem;
+            background: rgba(3, 6, 16, 0.8);
+            backdrop-filter: blur(10px);
+            margin-top: auto;
+            width: 100%;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--brand-primary), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .footer-heading {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-linke {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-linke:hover {
+            color: purple;
+        }
+
+        .footer-link {
+             color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -674,6 +765,7 @@
 <!-- TOP ALERT BANNER -->
 <div class="top-alert">
     <span>✨ New Update: React, JS, TypeScript & Tailwind support added.</span>
+    <span class="top-alert-link" onclick="NovaUI.toast('Downloading update...')">Click to install v1.1</span>
 </div>
 
 <!-- MOBILE BACKDROP -->
@@ -681,40 +773,90 @@
 
 <!-- VIEW 1: LANDING PAGE (HOME) -->
 <div id="landing-view" class="view-section active">
-    <div class="landing-container">
+    <div class="landing-container" style="justify-content: flex-start; overflow-y: auto;">
         <div class="bg-grid"></div>
         <div class="hero-glow"></div>
-        <div class="landing-content">
-            <span class="badge badge-glow mb-4">Nova UI v1.0</span>
-            <h1 class="text-gradient" style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;">
-                The UI Kit for<br>The Future.
-            </h1>
-            <p class="text-muted" style="font-size: 1.25rem; max-width: 600px; margin-bottom: 2.5rem;">
-                Advanced interaction primitives. Glassmorphism. CSS-only effects.
-            </p>
-            <div class="flex gap-md">
-                <button class="btn btn-primary" onclick="NovaUI.navigate('app')">View Components <span style="margin-left:5px">→</span></button>
-                <button class="btn btn-magnetic" onclick="window.open('https://github.com/DiyaK294/Nova-UI-Library', '_blank')">GitHub Repo</button>
-            </div>
-            <div class="mock-browser animate-float">
-                <div class="mock-header">
-                    <div class="mock-dot dot-red"></div>
-                    <div class="mock-dot dot-yellow"></div>
-                    <div class="mock-dot dot-green"></div>
-                    <div style="margin-left: auto; font-size: 0.7rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">novaui.dev</div>
+        
+        <!-- Landing Content Wrapper to center content but allow footer at bottom -->
+        <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding-top: 4rem; padding-bottom: 4rem;">
+            <div class="landing-content">
+                <span class="badge badge-glow mb-4">NovaUI v3.0</span>
+                <h1 class="text-gradient" style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;">
+                    The UI Kit for<br>The Future.
+                </h1>
+                <p class="text-muted" style="font-size: 1.25rem; max-width: 600px; margin-bottom: 2.5rem;">
+                    Advanced interaction primitives. Glassmorphism. CSS-only effects.
+                </p>
+                <div class="flex gap-md">
+                    <button class="btn btn-primary" onclick="NovaUI.navigate('app')">View Components <span style="margin-left:5px">→</span></button>
+                    <button class="btn btn-magnetic" onclick="window.open('https://github.com', '_blank')">GitHub Repo</button>
                 </div>
-                <div class="mock-body">
-                    <div class="bento-grid" style="transform: scale(0.9); transform-origin: top center;">
-                        <div class="bento-item bento-wide">
-                            <div class="flex-between mb-4"><span style="font-weight: 600;">Monthly Revenue</span><span class="badge badge-glow">+24%</span></div>
-                            <div class="shimmer" style="height: 60px; width: 100%;"></div>
+                <div class="mock-browser animate-float">
+                    <div class="mock-header">
+                        <div class="mock-dot dot-red"></div>
+                        <div class="mock-dot dot-yellow"></div>
+                        <div class="mock-dot dot-green"></div>
+                        <div style="margin-left: auto; font-size: 0.7rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 4px;">novaui.dev</div>
+                    </div>
+                    <div class="mock-body">
+                        <div class="bento-grid" style="transform: scale(0.9); transform-origin: top center;">
+                            <div class="bento-item bento-wide">
+                                <div class="flex-between mb-4"><span style="font-weight: 600;">Monthly Revenue</span><span class="badge badge-glow">+24%</span></div>
+                                <div class="shimmer" style="height: 60px; width: 100%;"></div>
+                            </div>
+                            <div class="bento-item"><div class="flex-center" style="height: 100%; font-size: 2rem;">✨</div></div>
+                            <div class="bento-item"><h4 style="margin:0; color: var(--accent-cyan);">Active Users</h4><p style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;">8,241</p></div>
                         </div>
-                        <div class="bento-item"><div class="flex-center" style="height: 100%; font-size: 2rem;">✨</div></div>
-                        <div class="bento-item"><h4 style="margin:0; color: var(--accent-cyan);">Active Users</h4><p style="font-size: 1.5rem; font-weight: 700; margin: 0.5rem 0;">8,241</p></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- FOOTER (Landing) -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">NovaUI Pro</div>
+                    <p class="text-muted" style="line-height: 1.6; max-width: 300px;">
+                        The ultimate component library for building modern, high-performance web applications.
+                    </p>
+                </div>
+                <div>
+                    <div class="footer-heading">Product</div>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Components</a></li>
+                        <li><a href="#" class="footer-link">Templates</a></li>
+                        <li><a href="#" class="footer-link">Pricing</a></li>
+                        <li><a href="#" class="footer-link">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Resources</div>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                        <li><a href="#" class="footer-link">Figma Kit</a></li>
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-heading">Legal</div>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link">Terms of Service</a></li>
+                        <li><a href="#" class="footer-link">License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 NovaUI Made By Diya. All rights reserved.</div>
+                <div class="flex gap-md">
+                    <a href="#" class="footer-link">Twitter</a>
+                    <a href="#" class="footer-link">GitHub</a>
+                    <a href="#" class="footer-link">Discord</a>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
 
@@ -1179,6 +1321,17 @@
                 </div>
                 <div id="magnetic" style="margin-top: 3rem;"><h3 style="margin-bottom: 1rem;">Magnetic Buttons</h3><div class="flex gap-md"><button class="btn btn-magnetic">Hover Me</button></div></div>
             </div>
+
+            <!-- FOOTER (App View) -->
+            <footer class="footer" style="margin-top: 4rem;">
+                <div class="footer-bottom" style="border-top: none; margin-top: 0; padding-top: 0;">
+                    <div>Built with ❤️ by <a class="footer-linke" href="https://github.com/DiyaK294">diya</a></div>
+                    <div class="flex gap-md">
+                        <a href="#" class="footer-link">Docs</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+                </div>
+            </footer>
     
         </main>
     </div>
@@ -1235,8 +1388,13 @@
             document.querySelector('.components-grid-container').style.display = 'block';
             document.querySelectorAll('.section-detail').forEach(el => el.style.display = 'none');
             document.querySelector('.main-view').scrollTop = 0;
-            document.querySelectorAll('.sidebar .nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelector('.sidebar .nav-item[onclick*="showAllComponents"]').classList.add('active');
+            
+            // Safe sidebar update
+            const navItems = document.querySelectorAll('.sidebar .nav-item');
+            if (navItems) navItems.forEach(el => el.classList.remove('active'));
+            
+            const activeLink = document.querySelector('.sidebar .nav-item[onclick*="showAllComponents"]');
+            if (activeLink) activeLink.classList.add('active');
         },
 
         searchComponents: (query) => {
@@ -1385,5 +1543,3 @@
 </script>
 </body>
 </html>
-
-
